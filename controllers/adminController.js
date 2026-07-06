@@ -3,7 +3,7 @@ import User from "../models/User.js";
 import Timeline from "../models/Timeline.js";
 import Payment from "../models/Payment.js";
 import { firebaseAuth } from "../config/firebaseAdmin.js";
-
+import mongoose from "mongoose";
 // DASHBOARD STATS
 export const getAdminStats = async (req, res) => {
   try {
