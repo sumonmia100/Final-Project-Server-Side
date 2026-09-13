@@ -2,7 +2,7 @@ import express from "express";
 import { auth } from "../middleware/auth.js";
 import {
   getCurrentUser,
-  updateCurrentUser
+  updateCurrentUser,
   registerOrLogin,
   getUserByEmail,
   loginWithPassword,

@@ -11,7 +11,7 @@ export const getCurrentUser = async (req, res) => {
   }
 };
 // Update Current User
-export const updateCurrentUser(req,res){
+export const updateCurrentUser = async (req, res) => {
      try {
     const { name, photo } = req.body;
 
