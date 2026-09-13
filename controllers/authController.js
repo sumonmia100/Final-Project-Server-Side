@@ -10,7 +10,58 @@ export const getCurrentUser = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+// Update Current User
+export const updateCurrentUser(req,res){
+     try {
+    const { name, photo } = req.body;
 
+    const firebaseUid = req.user.firebaseUid || req.user.uid;
+
+    if (!firebaseUid) {
+      return res.status(400).json({
+        message: "Firebase UID not found",
+      });
+    }
+
+    const user = await User.findOne({ firebaseUid });
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    if (name !== undefined) {
+      user.name = name;
+    }
+
+    if (photo !== undefined) {
+      user.photo = photo;
+    }
+
+    await user.save();
+
+    res.json({
+      message: "Profile updated successfully",
+      user: {
+        _id: user._id,
+        firebaseUid: user.firebaseUid,
+        name: user.name,
+        email: user.email,
+        photo: user.photo,
+        role: user.role,
+        isPremium: user.isPremium,
+        isBlocked: user.isBlocked,
+      },
+    });
+  } catch (err) {
+    console.error("Update current user error:", err);
+
+    res.status(500).json({
+      message: err.message,
+    });
+  }
+}
 //Register / Login with Firebase
 export const registerOrLogin = async (req, res) => {
   try {
