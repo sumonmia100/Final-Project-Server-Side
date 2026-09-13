@@ -20,6 +20,7 @@ app.use(
       "http://localhost:5174",
       "https://final-project-d2289.web.app",
       "https://final-project-d2289.firebaseapp.com",
+      "https://final-project-swart-gamma.vercel.app",
     ],
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
