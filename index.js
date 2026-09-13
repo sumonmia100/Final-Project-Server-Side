@@ -15,12 +15,20 @@ const app = express();
 
 app.use(
   cors({
-    origin: ["http://localhost:5173", "http://localhost:5174","https://final-project-d2289.web.app"],
+    origin: [
+      "http://localhost:5173",
+      "http://localhost:5174",
+      "https://final-project-d2289.web.app",
+      "https://final-project-d2289.firebaseapp.com",
+    ],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE","OPTIONS"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// Handle preflight OPTIONS requests explicitly
+app.options("*", cors());
 app.use(express.json())
 
 // database connect
