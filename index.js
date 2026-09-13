@@ -28,8 +28,6 @@ app.use(
   })
 );
 
-// Handle preflight OPTIONS requests explicitly
-app.options("/(.*)", cors());
 app.use(express.json())
 
 // database connect
